@@ -1,0 +1,32 @@
+CODE FLOW:
+
+GLOBAL VARIABLES
+1. We maintain an array of transactions sorted according to timestamps.
+2. We also have a mapping of point to the payer name.
+
+ADD endpoint
+1. The add endpoint only accepts the a POST request.
+2. The transaction (payer, points, timestamp) is added to the array of transactions.
+3.  The map is updated with the payer and the points.
+4. The transaction array is sorted according to timestamp.
+
+BALANCE endpoint
+1. The balance endpoint only accepts a GET request.
+2. It returns the map of payer and points in a JSON format.
+
+SPEND endpoint
+1. The spend endpoint only accepts a POST request.
+2. It checks if the total points avialable is greater than the points to be spent. If not, it returns an error.
+3. It then iterates through the transactions array and deducts the points from the payer with the earliest timestamp.
+4. While iterating, it also checks for the map of payer and points. If the points in the map are lesser than the transaction points, the map value is taken. This case can happen when the payer deducted points with the ADD endpoint.
+
+Running the code:
+1. The code is written in Golang.
+2. To run the program,, run the following command in the terminal:
+```go run main.go```
+3. This will start a server on port 8080. It accepts requests on the following endpoints:
+    1. /add
+    2. /spend
+    3. /balance
+4. The endpoints can be tested using Postman or curl.
+5. HTTP errors are handled and logging is performed wherer necessary to a file.

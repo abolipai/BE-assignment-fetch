@@ -1,0 +1,25 @@
+1. Why did you choose the tools, libraries, and language you used for the coding exercise?
+- I used Golang for this project. Golang provides a simple way to start up a HTTP server and serve APIs. We can also use go routines if we want to do any other complicated computational tasks in the background for any endpoint.
+I used the http library of Golang for this.
+- I also used the Postman API to send API requests and test the code locally.
+- Other than this, I have used structs in golang to define the structure of input and output for the APIs. I used an array (slice) to store the transactions as they come and sort it with timestamps.
+I also used a map to map the total points of each payer to the payer name.
+
+2. What are the advantages and disadvantages of your solution?
+- Advantages of the solution
+a. I used a Golang server which is lightweight and starts up fast.
+b. Golang can be cross-compiled for different platforms, so we can run it on any OS.
+
+- Disadvantages of the solution
+a. I used global memory for the map in the program. Ideally, we should connect our API to a database, and update the map there. 
+This will help in running the service on multiple nodes, handling faults and offer better scalability.
+b. We sort the transactions array every time the ADD endpoint is called. This can have performance issues.
+
+3. What has been a favorite school/personal project thus far? What about it that challenged you?
+- My favourite personal project was developing a new cache coherence protocol for real time operating systems. 
+This protocol addressed the issue of cache locking in mutli core real time systems, where the cache lines in other core caches can contain stale data.
+In addition to bringing data integrity, this protocol performed better than the traditional protocols for high criticality tasks.
+The most challenging part of this project was to identify gaps in the existing solution.  
+This required going through mnay different papers and then coming up with a new protocol. We had to ensure that the protocol did not introduce unnecessary states, performs correctly without cache locking and does not affect cache utilization.
+We also had to code and simulate the entire memory subsystem in C.
+The efforts came to fruition as the paper was published in the IEEE DS-RT conference.
